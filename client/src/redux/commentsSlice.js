@@ -32,7 +32,7 @@ const commentsSlice = createSlice({
     page: 1,
     limit: 10,
     search: '',
-    mode: 'json',
+    mode: 'table',
   },
   //редюсеры для установки:
   reducers: {

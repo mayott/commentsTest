@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { EuiButtonGroup, EuiFieldSearch } from '@elastic/eui'
+import { EuiButtonGroup } from '@elastic/eui'
 import { useDispatch, useSelector } from 'react-redux'
 import { debounce } from 'lodash'
 import {
@@ -16,14 +16,14 @@ import CodeBlock from './CodeBlock/CodeBlock'
 // Массив кнопок для изменения варианта отображения
 const modeButtons = [
   {
-    id: 'json',
-    label: 'JSON',
-    value: 'json',
-  },
-  {
     id: 'table',
     label: 'Table',
     value: 'table',
+  },
+  {
+    id: 'json',
+    label: 'JSON',
+    value: 'json',
   },
 ]
 

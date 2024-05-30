@@ -4,7 +4,7 @@ import React from 'react'
 const CodeBlock = ({ comments, loading }) => {
   if (loading) return <EuiLoadingSpinner />
   return (
-    <EuiCodeBlock language='json' paddingSize='m'>
+    <EuiCodeBlock language='json' paddingSize='m' lineNumbers isCopyable>
       {JSON.stringify(comments, null, 2)}
     </EuiCodeBlock>
   )

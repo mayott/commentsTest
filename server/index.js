@@ -10,24 +10,29 @@ app.use(cors())
 
 const DATA_URL = 'https://jsonplaceholder.typicode.com/comments'
 
+//переменная для хранения кешированных данных, чтобы не запрашивать каждый раз 500 комментов
+let cachedData = []
+
 // Получение данных
-const fetchData = async () => {
+const loadData = async () => {
   try {
     const response = await axios.get(DATA_URL)
-    return response.data
+    cachedData = response.data
+    console.log('Data loaded and cached')
   } catch (error) {
     console.error('Error fetching data:', error)
-    return []
   }
 }
+
+//загрузка данных один раз при запуске сервера
+loadData()
 
 // Получение данных с пагинацией и поиском
 app.get('/comments', async (req, res) => {
   const { page = 1, limit = 10, search = '' } = req.query
-  const data = await fetchData()
 
   // Поиск
-  const filteredData = data.filter(
+  const filteredData = cachedData.filter(
     (comment) =>
       comment.name.includes(search) ||
       comment.email.includes(search) ||
@@ -50,9 +55,7 @@ app.get('/comments', async (req, res) => {
 // Получение одного коммента по ID
 app.get('/comments/:id', async (req, res) => {
   const { id } = req.params
-  const data = await fetchData()
-
-  const comment = data.find((comment) => comment.id === Number(id))
+  const comment = cachedData.find((comment) => comment.id === Number(id))
 
   if (comment) {
     res.json(comment)

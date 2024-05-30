@@ -1,4 +1,3 @@
-import './index.css'
 import '@elastic/eui/dist/eui_theme_light.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
