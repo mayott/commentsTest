@@ -1,0 +1,10 @@
+.app-container {
+  padding: 28px 24px;
+}
+
+.app-header {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-align: center;
+}
