@@ -67,11 +67,12 @@ const CommentsList = () => {
       field: 'email',
       name: 'E-mail',
       width: '15%',
+      truncateText: true,
     },
     {
       field: 'body',
       name: 'Comment',
-      truncateText: { lines: 2 },
+      truncateText: true,
     },
   ]
 
